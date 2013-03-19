@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Blob</title>
+		<style>
+			canvas {
+				background: #fff;
+				border-radius: 3px;
+				box-shadow: rgba(0, 0, 0, .4) 0 0 40px;
+				left: calc(50% - 480px);
+				position: absolute;
+				top: calc(50% - 270px);
+			}
+
+			html {
+				background: -webkit-radial-gradient(#888, #555);
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="fsx.js"></script>
+		<script src="gfx.js"></script>
+		<script>
+			// SCENE
+			document.addEventListener('keydown', function (event) {
+				if (event.keyCode == 32) {
+					var vx = Math.random() * 10 - 5;
+
+					var a = createParticle(460, 20, vx),
+						b = createParticle(500, 20, vx),
+						c = createParticle(460, 60),
+						d = createParticle(500, 60);
+
+					constrain(a, b, c, d, true);
+				}
+			});
+
+			setInterval(function () {
+				step();
+				render();
+			}, 25);
+		</script>
+	</body>
+</html>
