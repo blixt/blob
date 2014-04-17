@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<title>Blob</title>
-		<style>
-			canvas {
-				background: #fff;
-				border-radius: 3px;
-				box-shadow: rgba(0, 0, 0, .4) 0 0 40px;
-				left: calc(50% - 480px);
-				position: absolute;
-				top: calc(50% - 270px);
-			}
+    <title>Blob</title>
+    <style>
+      canvas {
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: rgba(0, 0, 0, .4) 0 0 40px;
+        left: calc(50% - 480px);
+        position: absolute;
+        top: calc(50% - 270px);
+      }
 
-			html {
-				background: -webkit-radial-gradient(#888, #555);
-				height: 100%;
-			}
-		</style>
-	</head>
-	<body>
-		<script src="fsx.js"></script>
-		<script src="gfx.js"></script>
-		<script>
-			// SCENE
-			document.addEventListener('keydown', function (event) {
-				if (event.keyCode == 32) {
-					var vx = Math.random() * 10 - 5;
+      html {
+        background: -webkit-radial-gradient(#888, #555);
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="fsx.js"></script>
+    <script src="gfx.js"></script>
+    <script>
+      // SCENE
+      createLine(800, 200, 860, 20);
+      createLine(600, 20, 600, 230);
+      createLine(600, 230, 550, 320);
+      createLine(550, 320, 500, 320);
+      createLine(480, 400, 800, 200);
+      createLine(20, 400, 940, 520);
 
-					var a = createParticle(460, 20, vx),
-						b = createParticle(500, 20, vx),
-						c = createParticle(460, 60),
-						d = createParticle(500, 60);
+      document.addEventListener('keydown', function (event) {
+        if (event.keyCode == 32) {
+          var vx = Math.random() * 10 - 5;
 
-					constrain(a, b, c, d, true);
-				}
-			});
+          createBlob(770, 50, 25, 20, vx);
+        }
+      });
 
-			setInterval(function () {
-				step();
-				render();
-			}, 25);
-		</script>
-	</body>
+      setInterval(function () {
+        step();
+        render();
+      }, 20);
+    </script>
+  </body>
 </html>
